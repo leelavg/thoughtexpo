@@ -1,13 +1,11 @@
-{{ define "main" }}
-
-<h1>{{ .Title }}</h1>
+{{define "main"}}
+<h1>{{.Title}}</h1>
 <p>Count: {{ len .Pages }}</p>
-{{ range .Pages.ByPublishDate.Reverse }}
+{{range .Pages.ByPublishDate.Reverse}}
 <p>
-  <a class="font-125" href="{{ .RelPermalink }}">{{ .Title }}</a>
+  <a class="" href="{{.RelPermalink}}">{{ .Title }}</a>
   <br>
-  {{ partial "date-and-tags.html" . }}
+  {{partial "date-and-tags.html" .}}
 </p>
-{{ end }}
-
-{{ end }}
+{{end}}
+{{end}}

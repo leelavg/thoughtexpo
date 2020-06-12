@@ -1,30 +1,29 @@
+---
 baseURL: https://thoughtexpo.com/
 languageCode: en-us
-defaultContentLanguage: en
 title: thoughtexpo
 enableRobotsTXT: true
+enableGitInfo: true
+summaryLength: 25
 
 taxanomies:
-  tag: "tags"
+  tag: tags
 
 permalinks:
-  blog: "/:filename/"
+  blog: /:filename/
 
 params:
-  homeText: "Placeholder until the actual blog is up"
-  dateFormat: "Jan 2, 2006"
+  description: "@leela_vg corner in the internet"
 
 menu:
   main:
-    - name: "Home"
-      pre: "home"
-      url: "/"
+    - name: Home
+      url: /
       weight: 1
-    - name: "Blog"
-      pre: "edit"
-      url: "/blog/"
+    - name: Blog
+      url: /blog/
       weight: 2
-    - name: "Tags"
-      pre: "tag"
-      url: "/tags/"
+    - name: Tags
+      url: /tags/
       weight: 3
+...

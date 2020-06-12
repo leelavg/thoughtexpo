@@ -1,13 +1,9 @@
-<!doctype html>
-<html lang="en">
-    {{ partial "head.html" . }} 
+<!DOCTYPE html>
+<html lang="{{.Site.LanguageCode}}">
+    {{partial "head.html" .}} 
   <body>
-      {{ partial "nav.html" . }}
-    <div class="container">
-      <main id="main">
-       {{ block "main" . }}{{ end }}
-      </main>
-    </div>
-    {{ partial "script.html" . }}
+    {{partial "header.html" .}}
+    {{block "main" .}}{{end}}
+    {{partial "footer.html" .}}
   </body>
 </html>
