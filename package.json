@@ -1,0 +1,14 @@
+{
+  "name": "thoughtexpo",
+  "version": "0.0.1",
+  "description": "Use tailwind css with personal website",
+  "main": "index.js",
+  "repository": "git@github.com:leelavg/thoughtexpo.git",
+  "author": "Leela Venkaiah G",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^9.8.1",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.4.6"
+  }
+}

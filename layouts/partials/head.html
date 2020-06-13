@@ -6,6 +6,6 @@
     <link rel="canonical" href="{{.Permalink}}" />
     {{template "_internal/opengraph.html" .}}
     {{template "_internal/twitter_cards.html" .}}
-    {{$css := "css/tailwind.min.css" | absURL}}
-    <link rel="stylesheet" href="{{$css}}">
+    {{$css := resources.Get "css/tailwind.css" | resources.PostCSS | minify | fingerprint | resources.PostProcess}}
+    <link rel="stylesheet" href="{{$css.RelPermalink}}">
 </head>

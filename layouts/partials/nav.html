@@ -1,7 +1,7 @@
 <div class="">
-    <nav class="">
+    <nav class="m-auto text-center">
     {{ range .Site.Menus.main }} 
-      <p>{{.}}</p>
+      <a href="{{.URL}}">{{.Name}}</a>
     {{ end }}
     </nav>
 </div>

@@ -1,10 +1,12 @@
 ---
-baseURL: https://thoughtexpo.com/
+baseURL: /
 languageCode: en-us
 title: thoughtexpo
 enableRobotsTXT: true
 enableGitInfo: true
 summaryLength: 25
+build:
+  writeStats: true
 
 taxanomies:
   tag: tags
