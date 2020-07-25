@@ -1,11 +1,17 @@
-{{define "main"}}
-    <h1>{{.Title}}</h1>
-    <p>Count: {{len .Pages}}</p>
-    {{range .Data.Terms.Alphabetical}}
-    <p>
-        <a class="" href="{{.Page.Permalink}}">
-            <span class="">{{.Count}}</span> {{.Page.Title}}
-        </a>
-    </p>
+{{define "content"}}
+<section class="mx-4 my-16 md:mx-0 md:my-16">
+    <h2 class="font-sans text-5xl leading-tight font-bold text-cool-gray-800">{{.Title}}</h2>
+    <p class="text-cool-gray-500 my-4" id="list-count">Count: {{len .Pages}}</p>
+    {{if .Site.Params.search}}
+      <input id="search" type="text" placeholder="Search by tag..."/>
     {{end}}
+    <ul id="list">
+        {{range .Data.Terms.Alphabetical}}
+      <li class="my-1 mx-4">
+        <span class="text-cool-gray-500">({{.Count}})</time></span>
+        <a href="{{.Page.Permalink}}" class="font-sans leading-snug text-cool-gray-700 transition duration-200 ease-in-out transform focus:text-orange-500 hover:text-orange-500">{{.Page.Title}}</a>
+      </li>
+      {{end}}
+    </ul>
+</section>
 {{end}}

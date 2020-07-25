@@ -1,6 +1,12 @@
-{{define "main"}}
-<h1>{{.Title}}</h1>
-{{partial "date-and-tags.html" .}}
-<br><br>
-{{.Content}}
+{{define "content"}}
+<section class="m-4 md:mx-0 md:my-8">
+  <div class="mb-6 break-words">
+    <h2 class="font-sans text-3xl leading-tight font-bold text-cool-gray-800">{{.Title}}</h2>
+    {{partial "meta.html" .}}
+    {{partial "tags.html" .}}
+  </div>
+  {{partial "content.html" .}}
+</section>
+<!-- {{partial "social_shares.html" .}} -->
+{{partial "pagination.html" .}}
 {{end}}

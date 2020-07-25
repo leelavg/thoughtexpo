@@ -7,8 +7,9 @@
   "author": "Leela Venkaiah G",
   "license": "MIT",
   "dependencies": {
+    "@tailwindcss/ui": "^0.3.0",
     "autoprefixer": "^9.8.1",
     "postcss-cli": "^7.1.1",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.4.0"
   }
 }

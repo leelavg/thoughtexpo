@@ -1,0 +1,18 @@
+{{if ne .Type "page"}}
+<section class="m-4 md:mx-0 md:my-2 border-t border-b border-cool-gray-300 break-words">
+  <div class="flex">
+    <div class="w-1/2 text-left py-4 pr-8 border-r border-cool-gray-300">
+      {{if .PrevInSection}}
+      <p class="text-md text-cool-gray-500">Previous Post</p>
+      <a href="{{.PrevInSection.Permalink}}" class="font-sans text-xl leading-snug text-cool-gray-800 font-bold transition duration-200 ease-in-out transform focus:text-orange-500 hover:text-orange-500">{{.PrevInSection.LinkTitle}}</a>
+      {{end}}
+    </div>
+    <div class="w-1/2 text-right py-4 pl-8">
+      {{if .NextInSection}}
+      <p class="text-md text-cool-gray-500">Next Post</p>
+      <a href="{{.NextInSection.Permalink}}" class="font-sans text-xl leading-snug text-cool-gray-800 font-bold transition duration-200 ease-in-out transform focus:text-orange-500 hover:text-orange-500">{{.NextInSection.LinkTitle}}</a>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}}

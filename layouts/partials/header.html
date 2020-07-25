@@ -1,3 +1,11 @@
-<div class="w-full bg-blue-900 text-blue-200 m-2 p-2 text-center">
-<p>Sample Text, testing branch deploy options in Netlify</p>
-</div>
+<header class="mx-4 my-8 md:mx-0 md:my-16 text-center">
+  <h1 class="my-2 font-sans text-5xl leading-tight font-bold text-cool-gray-800">{{.Site.Title}}</h1>
+  <nav class="text-xl leading-relaxed text-cool-gray-500">
+    {{$nav := slice}}
+    {{range .Site.Menus.main}}
+      {{$element := printf "<a href=\"%s\">%s</a>" .URL .Name}}
+      {{$nav = $nav | append $element}}
+    {{end}}
+    {{ delimit $nav " / " }}
+  </nav>
+</header>

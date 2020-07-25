@@ -1,6 +1,8 @@
-{{define "main"}}
-  <div class="">
-    <h1 class="mx-auto text-center bg-gray-800 text-gray-200 w-1/3">{{.Title}}</h1>
-    <p class="mx-auto w-1/3">Developed following <a href="https://zwbetz.com/make-a-hugo-blog-from-scratch">this</a> blog post</p>
+{{define "content"}}
+<section class="mx-4 my-8 md:mx-0 md:my-8">
+  <div class="mb-6 break-words">
+    <h2 class="font-sans text-5xl leading-tight font-bold text-cool-gray-800">{{.Title}}</h2>
   </div>
+  {{partial "content.html" .}}
+</section>
 {{end}}

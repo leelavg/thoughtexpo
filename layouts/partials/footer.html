@@ -1,0 +1,9 @@
+<footer>
+  <div class="mt-10 mb-4 text-center text-sm leading-relaxed text-cool-gray-600">
+    <nav class="mb-6 text-xl text-cool-gray-500">
+      {{with site.Params.contact}}{{.|markdownify}}{{end}}
+    </nav>
+      {{with site.Params.footer}}{{.|markdownify}}{{end}}
+    <p>Last deployed on {{now.Format "Jan 02, 2006"}}</p>
+  </div>
+</footer>
