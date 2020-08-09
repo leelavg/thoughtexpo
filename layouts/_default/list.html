@@ -1,5 +1,5 @@
 {{define "content"}}
-<section class="mx-4 my-8 md:mx-0 md:my-8">
+<section class="mx-4 my-16 md:mx-0 md:my-16">
     <h2 class="font-sans text-5xl leading-tight font-bold text-cool-gray-800">{{.Title}}</h2>
     <p class="text-cool-gray-500 my-4 " id="list-count">Count: {{len .Pages}}</p>
     {{if .Site.Params.search}}
@@ -14,4 +14,9 @@
       {{end}}
     </ul>
 </section>
+{{if site.Params.search}}
+<!-- https://github.com/zwbetz-gh/uswds-hugo-theme/blob/46968006e8/assets/js/search.js -->
+{{$searchJs := resources.Get "js/search.js" | minify | fingerprint}}
+<script src="{{$searchJs.Permalink}}"></script>
+{{end}}
 {{end}}

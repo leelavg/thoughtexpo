@@ -1,4 +1,4 @@
-<p class="text-lg text-cool-gray-500 mt-1">
+<p class="text-cool-gray-500 mt-1">
   {{ $dateFormat := (partial "date-format.html" | string) }}
   {{ $publishDate := .PublishDate }}
   {{ $formattedPublishDate := $publishDate.Format $dateFormat }}

@@ -2,17 +2,23 @@
 <html lang="{{.Site.LanguageCode}}">
     <head>
         {{partial "head.html" .}}
+        <!-- for ipad -->
+        <style>
+            @media only screen
+            and (min-device-width : 768px)
+            and (max-device-width : 1024px)
+            and (orientation : portrait) {
+                main {
+                    max-width: 42rem !important;
+                }
+            }
+        </style>
     </head>
     <body class="bg-ecru border-t-4 border-orange-500 antialiased font-body">
-        <main class="sm:max-w-xl md:max-w-2xl sm:mx-auto">
+        <main class="md:max-w-3xl sm:max-w-2xl sm:mx-auto">
             {{partial "header.html" .}}
             {{block "content" .}}{{end}}
             {{partial "footer.html" .}}
         </main>
-        {{if site.Params.search}}
-            <!-- https://github.com/zwbetz-gh/uswds-hugo-theme/blob/46968006e8/assets/js/search.js -->
-            {{$searchJs := resources.Get "js/search.js" | minify | fingerprint}}
-            <script src="{{$searchJs.Permalink }}"></script>
-        {{end}}
     </body>
 </html>

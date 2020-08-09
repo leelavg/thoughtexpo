@@ -2,37 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* purgecss ignore */
+body {
+  overflow-y: scroll;
+}
+
 ::selection {
   @apply bg-orange-200;
 }
 
-/* purgecss ignore */
 ::-moz-selection {
   @apply bg-orange-200;
 }
 
-/* purgecss ignore */
 .emoji {
   font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
 }
 
-/* purgecss ignore */
 article {
-  @apply text-lg;
+  @apply text-base;
 }
 
-/* purgecss ignore */
 article > * {
   @apply my-8;
 }
 
-/* purgecss ignore */
 article > *:last-child {
   @apply mb-0;
 }
 
-/* purgecss ignore */
 article > h1,
 article > h2,
 article > h3,
@@ -42,105 +39,89 @@ article > h6 {
   @apply font-sans font-bold text-cool-gray-800 leading-tight;
 }
 
-/* purgecss ignore */
 article > h1 {
   @apply text-5xl;
 }
 
-/* purgecss ignore */
 article > h2 {
   @apply text-4xl;
 }
 
-/* purgecss ignore */
 article > h3 {
   @apply text-3xl;
 }
 
-/* purgecss ignore */
 article > h4 {
   @apply text-2xl;
 }
 
-/* purgecss ignore */
 article > h5 {
   @apply text-xl;
 }
 
-/* purgecss ignore */
 article > p > code {
   @apply p-1 border border-cool-gray-200 bg-cool-gray-100;
 }
 
-/* purgecss ignore */
 article > .highlight > .chroma {
-  @apply p-6 bg-cool-gray-100 font-mono overflow-x-auto border border-cool-gray-200;
+  @apply p-4 bg-cool-gray-100 font-mono overflow-x-auto border border-cool-gray-200 text-sm;
 }
 
-/* purgecss ignore */
 hr {
   @apply border border-cool-gray-200;
 }
 
-/* purgecss ignore */
 ul {
   @apply list-square;
 }
 
-/* purgecss ignore */
 article > blockquote {
   @apply border-l-4 mx-4 px-4;
 }
 
-/* purgecss ignore */
 article > table {
   @apply text-left border-collapse;
 }
 
-/* purgecss ignore */
 article > table > thead > tr > th {
   @apply py-2 px-4 bg-cool-gray-200 font-bold border border-cool-gray-50;
 }
 
-/* purgecss ignore */
 article > table > tbody > tr > td {
   @apply py-2 px-4 border border-cool-gray-200;
 }
 
-/* purgecss ignore */
 a {
   @apply text-blue-500 transition duration-200 ease-in-out transform;
 }
 
-/* purgecss ignore */
 a:focus,
 a:hover {
   @apply text-blue-400;
 }
 
-/* purgecss ignore */
 .bg-ecru {
   --bg-opacity: 1;
   background-color: #f2f2f2;
   background-color: rgba(242, 242, 242, var(--bg-opacity));
 }
 
-/* purgecss ignore */
 nav > a {
   @apply text-blue-500 border-b-2 border-blue-500 transition duration-200 ease-in-out transform;
 }
 
-/* purgecss ignore */
 nav > a:hover, a:focus {
   @apply text-blue-400 border-blue-400;
 }
 
-/* purgecss ignore */
-input {
+input{
   @apply shadow appearance-none border border-green-500 rounded w-full py-2 px-3 text-gray-500 mb-3 leading-tight;
 }
 
-/* purgecss ignore */
-input:focus{
+button {
+  @apply rounded-full shadow appearance-none px-16 py-3 uppercase font-bold text-sm bg-cool-gray-200;
+}
+
+input:focus, button:hover {
   @apply outline-none shadow-outline;
 }

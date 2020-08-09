@@ -1,7 +1,7 @@
 <p>
   {{ $tags := slice }}
   {{ with .Params.tags }}
-      <strong class="text-lg text-cool-gray-500 mt-1">Tags: </strong>
+      <strong class="text-cool-gray-500 mt-1">Tags: </strong>
       {{ range . }}
         {{ $href := print ("tags/" | absLangURL) (. | urlize) }}
         {{ $element := printf "<a href=\"%s\">#%s</a>" $href . }}
