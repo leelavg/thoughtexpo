@@ -100,12 +100,6 @@ a:hover {
   @apply text-blue-400;
 }
 
-.bg-ecru {
-  --bg-opacity: 1;
-  background-color: #f2f2f2;
-  background-color: rgba(242, 242, 242, var(--bg-opacity));
-}
-
 nav > a {
   @apply text-blue-500 border-b-2 border-blue-500 transition duration-200 ease-in-out transform;
 }
