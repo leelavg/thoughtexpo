@@ -10,20 +10,12 @@ body {
   @apply bg-orange-200;
 }
 
-::-moz-selection {
-  @apply bg-orange-200;
-}
-
-.emoji {
-  font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
-}
-
 article {
-  @apply text-base;
+  @apply text-sm;
 }
 
 article > * {
-  @apply my-8;
+  @apply my-6;
 }
 
 article > *:last-child {
@@ -36,26 +28,22 @@ article > h3,
 article > h4,
 article > h5,
 article > h6 {
-  @apply font-sans font-bold text-cool-gray-800 leading-tight;
+  @apply font-sans font-bold text-cool-gray-800 leading-tight mt-10 border-b border-teal-500;
 }
 
 article > h1 {
-  @apply text-5xl;
-}
-
-article > h2 {
   @apply text-4xl;
 }
 
-article > h3 {
+article > h2 {
   @apply text-3xl;
 }
 
-article > h4 {
+article > h3 {
   @apply text-2xl;
 }
 
-article > h5 {
+article > h4 {
   @apply text-xl;
 }
 
@@ -67,8 +55,16 @@ article > .highlight > .chroma {
   @apply p-4 bg-cool-gray-100 font-mono overflow-x-auto border border-cool-gray-200 text-sm;
 }
 
+article > ul {
+  @apply mx-8 -my-2;
+}
+
+article > ul > ul {
+  @apply mx-16 -my-2;
+}
+
 hr {
-  @apply border border-cool-gray-200;
+  @apply border-b border-green-500;
 }
 
 ul {
@@ -118,4 +114,10 @@ button {
 
 input:focus, button:hover {
   @apply outline-none shadow-outline;
+}
+
+@screen md {
+  article {
+    @apply text-base;
+  }
 }

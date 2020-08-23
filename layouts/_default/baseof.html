@@ -2,20 +2,30 @@
 <html lang="{{.Site.LanguageCode}}">
     <head>
         {{partial "head.html" .}}
-        <!-- for ipad -->
         <style>
-            @media only screen
-            and (min-device-width : 768px)
-            and (max-device-width : 1024px)
-            and (orientation : portrait) {
+            /* For Firefox half-screen, iPad */
+            @media screen and (max-width : 768px) {
                 main {
-                    max-width: 42rem !important;
+                    max-width: 46rem !important;
+                }
+                article {
+                    font-size: 0.875rem;
+                }
+            }
+
+            /* Consistency at remaining breakpoints */
+            @media screen and (min-width : 768px) and (max-width : 1000px){
+                main {
+                    max-width: 46rem !important;
+                }
+                article {
+                    font-size: 0.875rem;
                 }
             }
         </style>
     </head>
     <body class="bg-cool-gray-50 border-t-4 border-teal-400 antialiased font-body">
-        <main class="md:max-w-3xl sm:max-w-2xl sm:mx-auto">
+        <main class="md:max-w-4xl sm:max-w-2xl sm:mx-auto lg:max-w-4xl xl:max-w-4xl">
             {{partial "header.html" .}}
             {{block "content" .}}{{end}}
             {{partial "footer.html" .}}

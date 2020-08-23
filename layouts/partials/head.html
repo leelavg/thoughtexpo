@@ -13,8 +13,8 @@
 {{template "_internal/twitter_cards.html" .}}
 <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&family=Fira+Sans:ital,wght@0,400;0,700;1,400&family=Miriam+Libre:wght@400;700&display=swap" rel="stylesheet">
 {{$chroma := resources.Get "css/chroma.css"}}
-{{$tailwind := resources.Get "css/tailwind.css" | resources.PostCSS}}
-{{if not (in (.Site.BaseURL | string) "localhost")}}
+{{$tailwind := resources.Get "css/tailwind.css" | resources.PostCSS (dict "inlineImports" true)}}
+{{if (eq (getenv "NODE_ENV") "production")}}
 {{$chroma = $chroma | minify | fingerprint}}
 {{$tailwind = $tailwind | minify | fingerprint | resources.PostProcess}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" defer></script>
