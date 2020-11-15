@@ -15,4 +15,4 @@ Welcome to my corner in the internet. My [Blog](/blog/) is where I document the 
 
 I have a Bachelor's Degree from [RGUKT](https://rguktrkv.ac.in/) and I'm passionate about computers and all the magic that happens under the hood, particularly interested in NVMe, Persistent Memory Programming and Software Defined Storage among other things in Storage Technologies.
 
-Anything related to the blog, get in touch at `hello@thoughexpo.com`
+Anything related to the blog, get in touch at `hello@thoughtexpo.com`
