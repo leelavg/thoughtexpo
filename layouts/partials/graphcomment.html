@@ -1,18 +1,7 @@
-<div><button id="comment" class="flex mt-8 mx-auto">load comments</button></div>
+<div><button id="comment" class="flex mt-8 mx-auto">toggle comments</button></div>
 <div id="graphcomment"></div>
-<script type="text/javascript">
-  (function (){
-  window.gc_params = {
-    graphcomment_id: 'thoughtexpo',
-  };
-  function getComments() {
-    var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
-    gc.src = 'https://graphcomment.com/js/integration.js?' + Math.round(Math.random() * 1e8);
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
-    };
-  var comment=document.getElementById("comment")
-  if (comment){
-    comment.addEventListener("click", getComments, {once: true});
-  }
-  })();
-</script>
+{{$commentJs := resources.Get "js/comment.js"}}
+{{if (eq (getenv "NODE_ENV") "production")}}
+    {{$commentJs = $commentJs | minify | fingerprint}}
+{{end}}
+<script src="{{$commentJs.Permalink}}"></script>
