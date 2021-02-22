@@ -11,5 +11,6 @@
       &bull; <strong>Lastmod: </strong>{{ $formattedLastmod }}
     {{ end }}
   {{ end }}
-  &bull; {{.ReadingTime}} min {{i18n "read"}} read
+  &bull; <strong>Author: </strong> <a href="https://www.linkedin.com/in/leelavg">{{ $.Param "author" }}</a>
+  &bull; {{.ReadingTime}} min read
 </p>

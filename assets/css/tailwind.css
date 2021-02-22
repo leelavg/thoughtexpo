@@ -72,7 +72,7 @@ ul {
 }
 
 article > blockquote {
-  @apply border-l-4 mx-4 px-4;
+  @apply border-l-4 mx-4 px-4 bg-cool-gray-100 border-teal-400;
 }
 
 article > table {
