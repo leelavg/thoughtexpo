@@ -63,12 +63,24 @@ article > ul > ul {
   @apply mx-16 -my-2;
 }
 
+article > ol {
+  @apply  mx-8 -my-2;
+}
+
+article > ol > ol {
+  @apply mx-16 -my-2;
+}
+
 hr {
   @apply border-b border-green-500;
 }
 
 ul {
   @apply list-square;
+}
+
+ol {
+  @apply list-decimal;
 }
 
 article > blockquote {
