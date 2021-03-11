@@ -20,7 +20,7 @@ Conceptual knowledge of docker and kubernetes to utilize `k3d` created cluster, 
 
 Although docker is updated to work with cgroup v2, I was only able to setup `k3d` cluster on falling back to cgroup v1 using below method:
 - To cgroup v1: `dnf install grubby && grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0" && reboot`
-- To switch back to cgroup v1: `grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy" && reboot`
+- To switch back to cgroup v2: `grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy" && reboot`
 
 Fedora recommended option is to use [podman](https://podman.io/) and [buildah](https://buildah.io/) however the steps in this post tested using docker.
 
@@ -28,7 +28,7 @@ I used **Fedora 32 Server Edition** with **8Gi** of RAM, [`/var`](https://though
 
 ## Installing Binary
 
-Version 4 is preferred as it has `k3d-managed` registry and it comes handy to create a repository along with cluster creation with no extra steps.
+k3d version 4 is preferred as it has `k3d-managed` registry and it comes handy to create a repository along with cluster creation with no extra steps.
 ``` sh
 # curl -OL https://github.com/rancher/k3d/releases/download/v4.2.0/k3d-linux-amd64
 # chmod +x k3d-linux-amd64
@@ -184,7 +184,9 @@ Digest: sha256:ce2360d5189a033012fbad1635e037be86f23b65cfd676b436d0931af390a2ac
 Status: Downloaded newer image for busybox:latest
 docker.io/library/busybox:latest
 
-# Pulling image which is currently deployed
+# (or)
+
+# Pulling image based on currently deployed pods
 # for image in $(kubectl get pod test-d77db976d-qxsvr -o jsonpath="{..image}"); do docker pull $image; done;
 Using default tag: latest
 latest: Pulling from library/busybox
