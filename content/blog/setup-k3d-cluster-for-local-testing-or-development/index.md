@@ -109,6 +109,44 @@ I highly recommend going through the [docs](https://k3d.io/) for customizing the
 
 As we don't want to pull images always from remote repository we'll be concentrating on point 4 from above for using local docker images.
 
+> NOTE: If k3d nodes are [tainted, tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) inhibit pod scheduling, before scheduling any pods and after verifying nodes are online, remove taints by running following command:
+``` json
+# Verify presence of taints on the nodes (jq is a command line JSON Processor)
+# kubectl get nodes -o json | jq '.items[].spec.taints'
+[
+  {
+    "effect": "NoSchedule",
+    "key": "node.cloudprovider.kubernetes.io/uninitialized",
+    "value": "true"
+  }
+]
+[
+  {
+    "effect": "NoSchedule",
+    "key": "node.cloudprovider.kubernetes.io/uninitialized",
+    "value": "true"
+  }
+]
+[
+  {
+    "effect": "NoSchedule",
+    "key": "node.cloudprovider.kubernetes.io/uninitialized",
+    "value": "true"
+  }
+]
+[
+  {
+    "effect": "NoSchedule",
+    "key": "node.cloudprovider.kubernetes.io/uninitialized",
+    "value": "true"
+  }
+]
+```
+
+If taints are found in above o/p, remove them by running ('-' at the end of command unset the value)
+
+`# for name in $(kubectl get nodes -o jsonpath={'..name'}); do kubectl taint nodes $name node.cloudprovider.kubernetes.io/uninitialized-; done;`
+
 ## Optimizing workflow
 
 We'll look at two scenarios of using local docker images in k3d cluster. One will be docker save and import into cluster, second is using a local registry. Both of the methods have use cases associated.
