@@ -349,10 +349,10 @@ def ListVolumes(self, request, context):
             json_files = glob.glob(os.path.join(mntdir, 'info', '**',
                                                 '*.json'),
                                     recursive=True)
-            pvcs = [
+            pvcs.extend([
                 name[name.find('pvc'):name.find('.json')]
                 for name in json_files
-            ]
+            ])
     except Exception as excep:
         errrmsg = str(excep)
 
