@@ -47,26 +47,17 @@ article > h4 {
   @apply text-xl;
 }
 
-article > p > code {
+article > p > code,
+article li > code {
   @apply p-1 border border-cool-gray-200 bg-cool-gray-100;
 }
 
-article > .highlight > .chroma {
-  @apply p-4 bg-cool-gray-100 font-mono overflow-x-auto border border-cool-gray-200 text-sm;
-}
-
-article > ul {
+article > ul,
+article > ol {
   @apply mx-8 -my-2;
 }
 
-article > ul > ul {
-  @apply mx-16 -my-2;
-}
-
-article > ol {
-  @apply  mx-8 -my-2;
-}
-
+article > ul > ul,
 article > ol > ol {
   @apply mx-16 -my-2;
 }
@@ -81,6 +72,10 @@ ul {
 
 ol {
   @apply list-decimal;
+}
+
+article > .highlight > .chroma {
+  @apply p-4 bg-cool-gray-100 font-mono overflow-x-auto border border-cool-gray-200 text-sm;
 }
 
 article > blockquote {
