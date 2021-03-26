@@ -119,6 +119,16 @@ button {
   @apply rounded-full shadow appearance-none px-16 py-3 uppercase font-bold text-sm bg-cool-gray-200;
 }
 
+@layer components {
+    .share {
+        @apply flex items-center mr-4 transition duration-500 ease-in-out transform text-cool-gray-500
+    }
+
+    .share:focus, .share:hover {
+        @apply scale-110 text-blue-500;
+    }
+}
+
 input:focus, button:hover {
   @apply outline-none shadow-outline;
 }

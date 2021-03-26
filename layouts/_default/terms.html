@@ -7,7 +7,7 @@
     {{end}}
     <ul id="list" class="flex justify-between flex-wrap">
     {{range .Data.Terms.Alphabetical}}
-      <li class="my-1 mx-4 inline w-1/5">
+      <li class="my-1 mx-4 w-1/5">
           <div class="flex">
             <span class="text-cool-gray-500">({{.Count}})&nbsp</span>
             <span><a href="{{.Page.Permalink}}" class="font-sans leading-snug text-cool-gray-700 transition duration-200 ease-in-out transform focus:text-orange-500 hover:text-orange-500">{{.Page.Title}}</a></span>

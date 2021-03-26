@@ -186,7 +186,3 @@ If for some reason the server didn't come up as expected, login to VM via consol
 Many services use `/var` for log messages and storing data apart from configs, it's always a good idea particulary in server environments to have a healthy amount of free space available in `/var` directory.
 
 All above steps are performed and verified on **Fedora 32 Server Edition** as part of making space for container images and related volume mounts.
-
-Hope your time is well spent and leave feedback or ask for any help in comments secion.:smile:
-
-So long :wave:

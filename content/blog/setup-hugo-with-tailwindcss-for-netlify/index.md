@@ -127,7 +127,3 @@ Hugo combined with Tailwind CSS provides many other features and this post inten
 - You can explore this site's [own repo](https://github.com/leelavg/thoughtexpo) in addition to above clones repo branches to get some more info about usage of tailwind components (@apply, @screen) and method 3 in general. `HEAD` on `master` branch is at [`3e1d1e3`](https://github.com/leelavg/thoughtexpo/commit/3e1d1e3f0ad4668191e0b738c34e0eecfbe0a595) at the time of this post publication.
 
 Expressing only thoughts without practice in a sense is futile, so here are the links for final results [Method1](https://method1--thoughtexpo-examples.netlify.app/), [Method2](https://method1--thoughtexpo-examples.netlify.app/) and [Method3](https://method2--thoughtexpo-examples.netlify.app/), these are being served from Netlify as all the repo branches stated above contains a `netlify.toml` and observe `stylesheet` link in `view-source(ctrl-u)` of above html pages.
-
-All right, if you have come this far, thanks a lot for your time and I hope it is well spent. I'll be very happy to hear yours thoughts.:smile:
-
-So long :wave:

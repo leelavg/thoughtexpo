@@ -484,7 +484,3 @@ If you have followed previous article and current post, you can delete entire `k
 As stated earlier script for setup and teardon of `k3d` cluster is available [here](https://github.com/leelavg/forge/blob/master/adhoc/k3d-kadalu.sh), you have been warned, don't run without checking it.
 
 It may seem that we have covered a lot of ground but I had to intentionally drop off some excerpts. I'll be continuing with exploring another component of Kadalu storage in later posts and add any points missed in current post. Stay tuned :eyes:
-
-All right, if you have come this far, thanks a lot for your time and I hope it is well spent. I'll be very happy to hear yours thoughts in the comments or you can contact me by any means mentioned in the footer :smile:
-
-So long :wave:

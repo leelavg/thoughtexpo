@@ -1,23 +1,18 @@
 {{if ne .Type "page"}}
-<section class="m-4 md:mx-0 md:my-8 bg-orange-50 border border-orange-500">
-  <div class="px-4 py-8">
+<section class="md:mx-0 mx-4 my-8 bg-orange-50 border border-orange-500 text-sm">
+  <div class="px-4 py-4">
     <div class="mb-6">
-      <p class="text-center leading-relaxed text-orange-600">Thanks for reading and, if you have enjoyed it, feel free to share.</p>
+      <p class="text-center leading-relaxed text-orange-600">Thanks for your time and I hope it is well spent, I'll be very happy to hear your thoughts in comments section or you can contact me by any means mentioned in the footer &#128516;.</p>
+      <p class="md:hidden mt-4 text-center leading-relaxed text-orange-600">Share on ...</p>
     </div>
     <div class="flex justify-center">
-      <a href="https://twitter.com/intent/tweet?url={{.Permalink}}&via=leela_vg&text=I+just+read+&quot;{{.LinkTitle}}&quot;" class="flex items-center mr-4 transition duration-500 ease-in-out transform focus:scale-110 hover:scale-110 text-cool-gray-500 focus:text-blue-500 hover:text-blue-500" target="_blank">
-        <svg class="w-8 h-8 md:w-6 md:h-6 mr-2" fill="currentColor" viewBox="0 0 512 512">
-          <path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6-18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6.8 15 2.5 22.1-80.5-4-151.9-42.6-199.6-101.3-8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.1 63.3 43.1 80.7C67 210.7 52 206.3 39 199v1.2c0 47 33.4 86.1 77.7 95-8.1 2.2-16.7 3.4-25.5 3.4-6.2 0-12.3-.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3-33.1 26-74.9 41.5-120.3 41.5-7.8 0-15.5-.5-23.1-1.4C62.9 432 113.8 448 168.4 448 346.6 448 444 300.3 444 172.2c0-4.2-.1-8.4-.3-12.5 18.9-13.7 35.3-30.8 48.3-50.2z" clip-rule="evenodd" fill-rule="evenodd"></path>
-        </svg>
-        <span class="hidden md:inline-block">Share on Twitter</span>
-      </a>
-      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{.Permalink}}" class="flex items-center transition duration-500 ease-in-out transform focus:scale-110 hover:scale-110 text-cool-gray-500 focus:text-blue-500 hover:text-blue-500" target="_blank">
-        <svg class="w-8 h-8 md:w-6 md:h-6 mr-2" fill="currentColor" viewBox="0 0 430.1 430.1">
-          <path d="M398.4 0H31.8C14.2 0 0 13.8 0 30.8v368.5c0 17 14.2 30.8 31.8 30.8h366.6c17.5 0 31.8-13.8 31.8-30.8V30.8c-.1-17-14.3-30.8-31.8-30.8zm-268 360h-65V165.8h65V360zM97.9 139.3h-.4c-21.8 0-35.9-14.9-35.9-33.6 0-19 14.5-33.5 36.8-33.5 22.2 0 35.9 14.5 36.3 33.5 0 18.7-14.1 33.6-36.8 33.6zM364.7 360h-65V256.1c0-26.1-9.4-43.9-32.9-43.9-18 0-28.6 12-33.3 23.6-1.7 4.1-2.2 9.9-2.2 15.7V360h-65s.9-176 0-194.2h65v27.5c8.6-13.2 24-32.1 58.5-32.1 42.8 0 74.8 27.7 74.8 87.4l.1 111.4zM230.9 194c.1-.2.3-.4.4-.6v.6h-.4z" clip-rule="evenodd" fill-rule="evenodd"></path>
-        </svg>
-        <span class="hidden md:inline-block">Share on LinkedIn</span>
-      </a>
+        <a href="https://www.twitter.com/intent/tweet?url={{.Permalink}}&via={{.Site.Params.twitter}}&text=I+just+read+&quot;{{.LinkTitle}}&quot;" target="_blank" class="share"><svg class="w-8 h-8 md:w-6 md:h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" clip-rule="evenodd" fill-rule="evenodd" /></svg><span class="hidden md:inline-block">Share on Twitter</span></a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{.Permalink}}" target="_blank" class="share"><svg class="w-8 h-8 md:w-6 md:h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" clip-rule="evenodd" fill-rule="evenodd" /></svg><span class="hidden md:inline-block">Share on LinkedIn</span></a>
+    </div>
+    <div class="mt-6">
+      <p class="text-center leading-relaxed text-orange-600">So long &#128075; ... </p>
     </div>
   </div>
 </section>
 {{end}}
+

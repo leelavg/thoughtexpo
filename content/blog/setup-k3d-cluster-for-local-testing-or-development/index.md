@@ -396,7 +396,3 @@ mirrors:
 Well, that brings us to the end of the blog post. I covered only the setup and opinionated workflow while testing/debugging kubernetes workloads in k3d, intentionally left out the usage of local registry in resource deployments as I intend to cover that in a later post.
 
 Stay tuned to learn about Container Storage Interface ([CSI](https://kubernetes-csi.github.io/docs/)) and how to work with CSI by deploying the resources in a k3d cluster.
-
-All right, if you have come this far, thanks a lot for your time and I hope it is well spent. I'll be very happy to hear yours thoughts in the comments or you can contact me by any means mentioned in the footer :smile:
-
-So long :wave:
