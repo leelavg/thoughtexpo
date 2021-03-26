@@ -24,11 +24,11 @@ As we'll be using a single html page we can refactor it to match recommended hug
 
 Below repo holds required files to demonstrate all three methods but we'll be cloning one branch at a time corresponding to our method:
 
-`$ git clone --single-branch --branch method1 https://github.com/leelavg/examples.git ~/method1 && cd "$_"`
+`-> git clone --single-branch --branch method1 https://github.com/leelavg/examples.git ~/method1 && cd "$_"`
 
 We are interested in only head section of `index.html` file from this repo where we are linking TailwindCSS from CDN.
 
-`$ sed -n '4,11p' layouts/index.html`
+`-> sed -n '4,11p' layouts/index.html`
 ```html {linenos=table,hl_lines=[6],linenostart=4}
 <head>
   <meta charset="utf-8">
@@ -46,11 +46,11 @@ TailwindCSS is a [PostCSS](https://github.com/postcss/postcss) plugin which pote
 
 There're new entries involved in method 2 which effectively utilizes NodeJS directly.
 
-`$ git clone --single-branch --branch method1 https://github.com/leelavg/examples.git ~/method2 && cd "$_"`
+`-> git clone --single-branch --branch method1 https://github.com/leelavg/examples.git ~/method2 && cd "$_"`
 
 On surface below will be the change in `index.html` when compared to other methods:
 
-`$ sed -n '4,11p' layouts/index.html`
+`-> sed -n '4,11p' layouts/index.html`
 ```html {linenos=table,hl_lines=[6],linenostart=4}
 <head>
   <meta charset="utf-8">
@@ -74,11 +74,11 @@ We'll be using Hugo Pipes feature which implicitly calls postcss-cli on demand d
 
 Lookout for changes in *config.yaml*, *tailwind.config.js* and this method greatly slims our *package.json*.
 
-`$ git clone --single-branch --branch method1 https://github.com/leelavg/examples.git ~/method2 && cd "$_"`
+`-> git clone --single-branch --branch method1 https://github.com/leelavg/examples.git ~/method2 && cd "$_"`
 
 When `NODE_ENV` is set to `production` hugo will minify, fingerprint post-processed CSS (refer below listing) and tailwind (>= v1.4.0) will purge unused styles.
 
-`$ sed -n '4,15p' layouts/index.html`
+`-> sed -n '4,15p' layouts/index.html`
 
 ```html {linenos=table,hl_lines=["6-9"],linenostart=4}
 <head>
@@ -95,7 +95,7 @@ When `NODE_ENV` is set to `production` hugo will minify, fingerprint post-proces
 </head>
 ```
 
-`$ cat tailwind.config.js`
+`-> cat tailwind.config.js`
 
 ```js {linenos=table,hl_lines=["7-13"],linenostart=1}
 module.exports = {
@@ -124,7 +124,7 @@ Hugo combined with Tailwind CSS provides many other features and this post inten
 - When new components are added to CSS file in method 2, make sure you correctly configure [purgeCSS](https://tailwindcss.com/docs/controlling-file-size) for retaining used styles
 - Prefer hugo version >= v0.72.0 if you are using method 3, which [fixes](https://github.com/gohugoio/hugo/issues/7161) collection of used tags resulting in correct *hugo_stats.json* for purgecss
 - Use [branch](https://docs.netlify.com/site-deploys/overview/#branches-and-deploys) deploy feature available in Netlify if you own a custom domain and this calls for an other interesting blog post
-- You can explore this site's [own repo](https://github.com/leelavg/thoughtexpo) in addition to above clones repo branches to get some more info about usage of tailwind components (@apply, @screen) and method 3 in general.
+- You can explore this site's [own repo](https://github.com/leelavg/thoughtexpo) in addition to above clones repo branches to get some more info about usage of tailwind components (@apply, @screen) and method 3 in general. `HEAD` on `master` branch is at [`3e1d1e3`](https://github.com/leelavg/thoughtexpo/commit/3e1d1e3f0ad4668191e0b738c34e0eecfbe0a595) at the time of this post publication.
 
 Expressing only thoughts without practice in a sense is futile, so here are the links for final results [Method1](https://method1--thoughtexpo-examples.netlify.app/), [Method2](https://method1--thoughtexpo-examples.netlify.app/) and [Method3](https://method2--thoughtexpo-examples.netlify.app/), these are being served from Netlify as all the repo branches stated above contains a `netlify.toml` and observe `stylesheet` link in `view-source(ctrl-u)` of above html pages.
 

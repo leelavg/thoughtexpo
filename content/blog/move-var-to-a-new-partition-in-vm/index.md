@@ -10,10 +10,10 @@ Well if there's not enough planning in building a resource it'll eat away our pr
 Current setup before migrating `/var` to new partition:
 
 ``` bash {linenos=table, linenostart=1}
-# cat /etc/os-release | grep PRETTY_NAME
+-> cat /etc/os-release | grep PRETTY_NAME
 PRETTY_NAME="Fedora 32 (Server Edition)"
 
-# lsblk
+-> lsblk
 NAME               MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda                  8:0    0   80G  0 disk 
 ├─sda1               8:1    0    1G  0 part /boot
@@ -21,7 +21,7 @@ sda                  8:0    0   80G  0 disk
   ├─fedora-root    253:0    0   45G  0 lvm  /
   └─fedora-swap    253:1    0  7.9G  0 lvm  [SWAP]
 
-# df -h
+-> df -h
 Filesystem               Size  Used Avail Use% Mounted on
 devtmpfs                 3.9G     0  3.9G   0% /dev
 tmpfs                    3.9G     0  3.9G   0% /dev/shm
@@ -45,25 +45,25 @@ Back to our scenario, create and attach a new disk to the guest machine and perf
 
 ``` bash {linenos=table, linenostart=1}
 # Change below vars to your needs
-disk_name=var-disk
-disk_size=100G
-vm_name=fedora-32
-target_disk=sdb
+-> disk_name=var-disk
+-> disk_size=100G
+-> vm_name=fedora-32
+-> target_disk=sdb
 
 # Get KVM default pool, if using some fancy directoy name please assign to 'pool_path' directly
-pool_path=$(virsh pool-dumpxml default | grep -Po '(?<=path>)[[:alnum:]/.-]+(?=<)')
+-> pool_path=$(virsh pool-dumpxml default | grep -Po '(?<=path>)[[:alnum:]/.-]+(?=<)')
 
 # Create 'qcow2' image with required size
-qemu-img create -o preallocation=metadata -f qcow2 $pool_path/$disk_name $disk_size
+-> qemu-img create -o preallocation=metadata -f qcow2 $pool_path/$disk_name $disk_size
 
 # Attach newly created disk to VM
-virsh attach-disk $vm_name --source $pool_path/$disk_name --target $target_disk --driver qemu --subdriver qcow2 --persistent
+-> virsh attach-disk $vm_name --source $pool_path/$disk_name --target $target_disk --driver qemu --subdriver qcow2 --persistent
 ```
 
 Verify the disk is created and attached to the **guest** (*Fedora*) machine
 ``` bash {linenos=table, linenostart=1, hl_lines=[9]}
 # On GUEST Machine verify disk is recognized
-# lsblk
+-> lsblk
 NAME               MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda                  8:0    0   80G  0 disk 
 ├─sda1               8:1    0    1G  0 part /boot
@@ -81,7 +81,7 @@ If incase you want to use already existing disk and create `xfs` on it, wipe (**
 
 ``` bash {linenos=table, linenostart=1, hl_lines=[9,10]}
 # On Guest (VM) verify volume group is created
-# lsblk
+-> lsblk
 NAME               MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda                  8:0    0   80G  0 disk 
 ├─sda1               8:1    0    1G  0 part /boot
@@ -99,39 +99,39 @@ sdb                  8:16   0  100G  0 disk
 We will mount new disk and to avoid any data writes we'll be dropping to [runlevel](https://developer.ibm.com/technologies/linux/tutorials/l-lpic1-101-3/) 1 and perform `rsync` data of `/var` to mounted disk
 
 ``` bash {linenos=table, linenostart=1, hl_lines=[9, 32]}
-mkdir /mnt/new-dir
-mount /dev/mapper/vg1-lv1 /mnt/new-dir
+-> mkdir /mnt/new-dir
+-> mount /dev/mapper/vg1-lv1 /mnt/new-dir
 
 # Drop to single user mode
-telinit 1
+-> telinit 1
 
 # Check the runlevel and take note of last runlevel
-who -r
-#         run-level 1  2021-01-20 07:49                   last=3
+-> who -r
+         run-level 1  2021-01-20 07:49                   last=3
 
 # rsync (or 'cp' also would work the same) 'var' contents to '/mnt/new-dir'
-rsync -aqxp /var/* /mnt/new-dir/
+-> rsync -aqxp /var/* /mnt/new-dir/
 
 # Rename '/var'
-mv /var /var.old && mkdir /var
+-> mv /var /var.old && mkdir /var
 
 # Take note of UUID of LVM
-UUID=$(blkid /dev/mapper/vg1-lv1 | grep -oP '(?<=UUID=").*?(?=")')
+-> UUID=$(blkid /dev/mapper/vg1-lv1 | grep -oP '(?<=UUID=").*?(?=")')
 
 # Add entry in '/etc/fstab'
-echo UUID=$UUID /var xfs defaults 0 0 >> /etc/fstab
+-> echo UUID=$UUID /var xfs defaults 0 0 >> /etc/fstab
 
 # Unmount /mnt/new-dir and mount '/var' as mentioned in '/etc/fstab'
-umount /mnt/new-dir
-mount -a
+-> umount /mnt/new-dir
+-> mount -a
 
 # IMP: Restore SELinux labels on newly mounted partition
-restorecon -R /var
+-> restorecon -R /var
 
 # It's best to reboot the server to ascertain no errors
 # Go to multi user mode (revert to last runlevel from line #9) and reboot the server
-telinit 3 # ('last=3' in line #9, in GUI environment it's typically '5')
-reboot
+-> telinit 3 # ('last=3' in line #9, in GUI environment it's typically '5')
+-> reboot
 ```
 
 If everything checks out well, server should reboot without any issues with `/var` mounted as per `/etc/fstab` entries.
@@ -143,10 +143,10 @@ After server restarts `mount | grep var` should be successfull, `df -h` should l
 Below is the info after migration:
 
 ``` bash {linenos=table, linenostart=1, hl_lines=[2,14,23,24]}
-# mount | grep var
+-> mount | grep var
 /dev/mapper/vg1-lv1 on /var type xfs (rw,relatime,seclabel,attr2,inode64,logbufs=8,logbsize=32k,noquota)
 
-# df -h
+-> df -h
 Filesystem               Size  Used Avail Use% Mounted on
 devtmpfs                 3.9G     0  3.9G   0% /dev
 tmpfs                    3.9G     0  3.9G   0% /dev/shm
@@ -158,7 +158,7 @@ tmpfs                    3.9G  4.0K  3.9G   1% /tmp
 tmpfs                    786M     0  786M   0% /run/user/0
 /dev/mapper/vg1-lv1      100G  3.8G   97G   4% /var
 
-# lsblk
+-> lsblk
 NAME               MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda                  8:0    0   80G  0 disk 
 ├─sda1               8:1    0    1G  0 part /boot
@@ -173,14 +173,14 @@ If for some reason the server didn't come up as expected, login to VM via consol
 
 ``` bash {linenos=table, linenostart=1}
 # Backup and remove newly added entry in /etc/fstab
-cp /etc/fstab /etc/fstab.old
-head -n -1 /etc/fstab.old > /etc/fstab
+-> cp /etc/fstab /etc/fstab.old
+-> head -n -1 /etc/fstab.old > /etc/fstab
 
 # Unmount '/var' and rename old directory (from previous step) to '/var'
-umount /var && mv -f /var.old /var
+-> umount /var && mv -f /var.old /var
 
 # Reboot server and compare info against before migration, it should match
-reboot
+-> reboot
 ```
 
 Many services use `/var` for log messages and storing data apart from configs, it's always a good idea particulary in server environments to have a healthy amount of free space available in `/var` directory.
