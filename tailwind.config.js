@@ -16,10 +16,18 @@ module.exports = {
   variants: {},
   plugins: [require('@tailwindcss/ui')],
   purge: {
-    content: ['./hugo_stats.json'],
-    defaultExtractor: (content) => {
-      let els = JSON.parse(content).htmlElements
-      return els.tags.concat(els.classes, els.ids)
-    },
+    content: ['./hugo_stats.json', './layouts/**/*.html'],
+    extractors: [
+      {
+        extractor: (content) => {
+          let els = JSON.parse(content).htmlElements
+          return els.tags.concat(els.classes, els.ids)
+        },
+        extensions: ['json'],
+      },
+    ],
+  },
+  future: {
+    removeDeprecatedGapUtilities: true,
   },
 }
