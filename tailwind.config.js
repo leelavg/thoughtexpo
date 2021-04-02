@@ -26,8 +26,7 @@ module.exports = {
         extensions: ['json'],
       },
     ],
+    mode: 'all',
   },
-  future: {
-    removeDeprecatedGapUtilities: true,
-  },
+  darkMode: 'media',
 }

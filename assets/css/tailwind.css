@@ -112,7 +112,7 @@ nav > a:hover, a:focus {
 }
 
 input{
-  @apply shadow appearance-none border border-green-500 rounded w-full py-2 px-3 text-gray-500 mb-3 leading-tight;
+  @apply shadow appearance-none border border-green-500 rounded w-full py-2 px-3 text-cool-gray-500 mb-3 leading-tight;
 }
 
 button {
@@ -121,7 +121,7 @@ button {
 
 @layer components {
     .share {
-        @apply flex items-center mr-4 transition duration-500 ease-in-out transform text-cool-gray-500
+        @apply flex items-center mr-4 transition duration-500 ease-in-out transform text-cool-gray-500;
     }
 
     .share:focus, .share:hover {
@@ -130,7 +130,7 @@ button {
 }
 
 input:focus, button:hover {
-  @apply outline-none shadow-outline;
+  @apply outline-none ring;
 }
 
 @screen md {
