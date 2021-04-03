@@ -1,7 +1,7 @@
 {{define "content"}}
-<section class="mx-4 my-16 md:mx-0 md:my-16">
-    <h2 class="font-sans text-5xl leading-tight font-bold text-cool-gray-800">{{.Title}}</h2>
-    <p class="text-cool-gray-500 my-4" id="list-count">Count: {{len .Pages}}</p>
+<section class="mx-4 my-8 md:mx-0">
+    <h2 class="font-sans text-5xl leading-tight font-bold text-gray-800">{{.Title}}</h2>
+    <p class="text-gray-500 my-4" id="list-count">Count: {{len .Pages}}</p>
     {{if .Site.Params.search}}
       <input id="search" type="text" placeholder="Search by tag..."/>
     {{end}}
@@ -9,8 +9,8 @@
     {{range .Data.Terms.Alphabetical}}
       <li class="my-1 mx-4 w-1/5">
           <div class="flex">
-            <span class="text-cool-gray-500">({{.Count}})&nbsp</span>
-            <span><a href="{{.Page.Permalink}}" class="font-sans leading-snug text-cool-gray-700 transition duration-200 ease-in-out transform focus:text-orange-500 hover:text-orange-500">{{.Page.Title}}</a></span>
+            <span class="text-gray-500">({{.Count}})&nbsp</span>
+            <span><a href="{{.Page.Permalink}}" class="font-sans leading-snug text-gray-700 transition duration-200 ease-in-out transform focus:text-orange-500 hover:text-orange-500">{{.Page.Title}}</a></span>
             </div>
       </li>
     {{end}}

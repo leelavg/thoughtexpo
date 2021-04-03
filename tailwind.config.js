@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   theme: {
@@ -11,10 +12,17 @@ module.exports = {
       square: 'square',
       decimal: 'decimal',
     },
+    colors: {
+      gray: colors.coolGray,
+      blue: colors.blue,
+      teal: colors.teal,
+      orange: colors.orange,
+      green: colors.green,
+    },
     extend: {},
   },
   variants: {},
-  plugins: [require('@tailwindcss/ui')],
+  plugins: [],
   purge: {
     content: ['./hugo_stats.json', './layouts/**/*.html'],
     extractors: [
@@ -28,5 +36,5 @@ module.exports = {
     ],
     mode: 'all',
   },
-  darkMode: 'media',
+  darkMode: 'class',
 }

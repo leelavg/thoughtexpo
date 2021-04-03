@@ -4,6 +4,7 @@
 
 body {
   overflow-y: scroll;
+  overflow-x: scroll;
 }
 
 ::selection {
@@ -28,7 +29,7 @@ article > h3,
 article > h4,
 article > h5,
 article > h6 {
-  @apply font-sans font-bold text-cool-gray-800 leading-tight mt-10 border-b border-teal-500;
+  @apply font-sans font-bold text-gray-800 leading-tight mt-10 border-b border-teal-500;
 }
 
 article > h1 {
@@ -49,7 +50,7 @@ article > h4 {
 
 article > p > code,
 article li > code {
-  @apply p-1 border border-cool-gray-200 bg-cool-gray-100;
+  @apply p-1 border border-gray-200 bg-gray-100;
 }
 
 article > ul,
@@ -63,7 +64,7 @@ article > ol > ol {
 }
 
 hr {
-  @apply border-b border-green-500;
+  @apply mt-8 border-gray-300;
 }
 
 ul {
@@ -75,11 +76,11 @@ ol {
 }
 
 article > .highlight > .chroma {
-  @apply p-4 bg-cool-gray-100 font-mono overflow-x-auto border border-cool-gray-200 text-sm;
+  @apply p-4 bg-gray-100 font-mono overflow-x-auto border border-gray-200 text-sm;
 }
 
 article > blockquote {
-  @apply border-l-4 mx-4 px-4 bg-cool-gray-100 border-teal-400;
+  @apply border-l-4 mx-4 px-4 bg-gray-100 border-teal-400;
 }
 
 article > table {
@@ -87,11 +88,11 @@ article > table {
 }
 
 article > table > thead > tr > th {
-  @apply py-2 px-4 bg-cool-gray-200 font-bold border border-cool-gray-50;
+  @apply py-2 px-4 bg-gray-200 font-bold border border-gray-50;
 }
 
 article > table > tbody > tr > td {
-  @apply py-2 px-4 border border-cool-gray-200;
+  @apply py-2 px-4 border border-gray-200;
 }
 
 a {
@@ -112,16 +113,16 @@ nav > a:hover, a:focus {
 }
 
 input{
-  @apply shadow appearance-none border border-green-500 rounded w-full py-2 px-3 text-cool-gray-500 mb-3 leading-tight;
+  @apply shadow appearance-none border border-green-500 rounded w-full py-2 px-3 text-gray-500 mb-3 leading-tight;
 }
 
 button {
-  @apply rounded-full shadow appearance-none px-16 py-3 uppercase font-bold text-sm bg-cool-gray-200;
+  @apply rounded-full shadow appearance-none px-16 py-3 uppercase font-bold text-sm bg-gray-200;
 }
 
 @layer components {
     .share {
-        @apply flex items-center mr-4 transition duration-500 ease-in-out transform text-cool-gray-500;
+        @apply flex items-center mr-4 transition duration-500 ease-in-out transform text-gray-500;
     }
 
     .share:focus, .share:hover {
