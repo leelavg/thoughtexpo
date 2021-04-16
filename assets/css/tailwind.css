@@ -63,9 +63,9 @@ article > ol > ol {
   @apply mx-16 -my-2;
 }
 
-hr {
-  @apply mt-8 border-gray-300;
-}
+/* hr { */
+/*   @apply mt-8 border-gray-300; */
+/* } */
 
 ul {
   @apply list-square;
