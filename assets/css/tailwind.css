@@ -75,6 +75,14 @@ ol {
   @apply list-decimal;
 }
 
+article img {
+    @apply my-4 rounded-lg shadow-xl transition duration-500 ease-in-out transform;
+}
+
+article img:hover {
+    @apply shadow-2xl scale-125;
+}
+
 article > .highlight > .chroma {
   @apply p-4 bg-gray-100 font-mono overflow-x-auto border border-gray-200 text-sm;
 }
