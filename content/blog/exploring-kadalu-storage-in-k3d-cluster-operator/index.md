@@ -11,14 +11,14 @@ Today we'll be discussing about where it all starts, namely Kadalu Operator. As 
 
 ## Introduction
 
-A kubernetes operator has funtional knowledge on how to manage a piece of tech (here, it's bootstrapping glusterfs to be used in kubernetes) among others. Custom Resource Definitions (CRDs) are at the heart of an operator in which we'll be listening to events on CRD object and turn knobs in managed resource.
+A kubernetes operator has functional knowledge on how to manage a piece of tech (here, it's bootstrapping glusterfs to be used in kubernetes) among others. Custom Resource Definitions (CRDs) are at the heart of an operator in which we'll be listening to events on CRD object and turn knobs in managed resource.
 
 Below are mandatory if you didn't come across kubernetes operators or how to use kubernetes python api:
 - [Video about Operator](https://youtu.be/MfDpQru0-ok)
 - [Article on creating Operator in Python from scratch](https://medium.com/flant-com/kubernetes-operator-in-python-451f2d2e33f3)
 - [Article series about Operator](https://flugel.it/infrastructure-as-code/building-kubernetes-operators-part-1-operator-pattern-and-concepts/) (not mandatory)
 
-Since we have already covered a lot of ground in [previous](https://thoughtexpo.com/exploring-kadalu-storage-in-k3d-cluster-csi-driver/) post about Kadalu Project and pre-requisites, we'll be diving directly into the kadalu operator component.
+Since we have already covered a lot of ground in [previous](https://thoughtexpo.com/exploring-kadalu-storage-in-k3d-cluster-csi-driver/) post about Kadalu Project and prerequisites, we'll be diving directly into the kadalu operator component.
 
 ## Deep dive into Operator
 
@@ -27,9 +27,9 @@ We'll be using a lot of python PDB module abilities and directly follow the acti
 As my workflow is heavily CLI based around tmux and neovim I think below image would be helpful going forward to reference on which pane I'll be performing the tasks. ![tmux-panes](1-kadalu-operator.png "tmux-panes")
 
 - Pane1: Any change to the source code will be performed which will be copied into the container
-- Pane2: Verfiy the state of the cluster and to run any other adhoc commands
+- Pane2: Verify the state of the cluster and to run any other ad hoc commands
 - Pane3: Exec into `kadalu-operator` container running on `operator` pod
-- Pane4: Attach to command prompt of `kadalu-operator` container and make sure not a send any `KeyboardInterrupt` (^C) ever
+- Pane4: Attach to command prompt of `kadalu-operator` container and make sure not to send any `KeyboardInterrupt` (^C) ever
 
 If you are interested in only knowing about how we can enter into PDB in a container, please refer below and rest of the post talks about various ways leveraging this simple concept to illustrate the workflow that happens in the operator.
 
@@ -40,13 +40,13 @@ If you are interested in only knowing about how we can enter into PDB in a conta
 How it works?
 - `-m pdb`: invokes python interpreter in trace mode of pdb
 - `-c`: provided to `pdb` as command line arguments
-- `import signal`: imports signal module from stdlib into pdb (as the startin word is not a pdb reserved keyword, there's no need to start the statement with `!`, same for next set of commands)
+- `import signal`: imports signal module from stdlib into pdb (as the starting word is not a pdb reserved keyword, there's no need to start the statement with `!`, same for next set of commands)
 - `signal.signal(signal.SIGUSR1, lambda *args: breakpoint())`: registering a handler for `SIGUSR1` signal, (`breakpoint() [in version >=3.7] =~ import pdb; pdb.set_trace()`)
 - `c`: `continue`, without this pdb prompt wait for user input
 
 Pros:
 - After the signal handler is registered we can invoke python debugger by running `kill -USR1 <pid>` on python process asynchronously
-- We'll have the ability to navigate around last ~10 stack frames and inspect arguments, variables etc
+- We'll have the ability to navigate around last ~10 stack frames and inspect arguments, variables etc.
 - In general, getting into debugger of a running process without changing any source code is an added benefit, having said that nothing can replace a good logging system :smile:
 
 Cons:
@@ -76,7 +76,7 @@ More than often, if you are debugging any component make sure this monitor is al
 
 #### Overriding docker `entrypoint`
 
-More than often there'll be a confusion between docker entrypoint and kubernetes command directive, please refer this official [doc](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/) once and for all to understand the difference if you have struggled earlier. Atleast I did find that confusing for some time :disappointed_relieved:
+More than often there'll be a confusion between docker entrypoint and kubernetes command directive, please refer this official [doc](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/) once and for all to understand the difference if you have struggled earlier. At least I did find that confusing for some time :disappointed_relieved:
 
 In this method I did override only the entrypoint (`python3 /kadalu/start.py`) specified in the docker image of kadalu-operator as below:
 ``` diff
@@ -110,7 +110,7 @@ Here I'm not running any pdb commands but only registering an alias for `reg_sig
 
 By looking at the source I know by the time `kadalulib.py` is called `signal` module is appended to `sys.path`, just for convenience I'm registering the signal handler at this specific line. After deploying above manifest I'm just checking the alias and registering the signal handler.
 
-> Note: `'tbreak'` is called temporary break and get's cleared after it's hit for the first time, `'kubectl attach'` operation is only performed onces until it times out, it's just being shown in the listings to refer to one of above mentioned panes.
+> Note: `'tbreak'` is called temporary break and gets cleared after it's hit for the first time, `'kubectl attach'` operation is only performed onces until it times out, it's just being shown in the listings to refer to one of above mentioned panes.
 
 ``` sh
 -> kubectl apply -f manifests/kadalu-operator.yaml
@@ -188,7 +188,7 @@ root@operator-67b7866747-gv5tv:/#
 
 #### Using `initContainers` and `postStart`
 
-We are lazy (atleast I'm at times :sweat_smile:) and don't want to make pdb wait for input we can make use of initContainers in conjunction with pdbrc to run commands on dropping into pdb prompt. On a clean `k3d` cluster I've deployed kadalu-operator.yaml with below modifications:
+We are lazy (at least I'm at times :sweat_smile:) and don't want to make pdb wait for input we can make use of initContainers in conjunction with pdbrc to run commands on dropping into pdb prompt. On a clean `k3d` cluster I've deployed kadalu-operator.yaml with below modifications:
 
 ``` diff
 -> git diff manifests/kadalu-operator.yaml
@@ -242,7 +242,7 @@ index 985a297..8e93c82 100644
 +        emptyDir: {}
 ```
 
-After looking at above, you might be of opnion of why to go through all this hassle rather than just `import signal` and set a `breakpoint()` in `command` value itself.
+After looking at above, you might be of opinion of why to go through all this hassle rather than just `import signal` and set a `breakpoint()` in `command` value itself.
 
 However there might be scenarios where you would want to set an actual breakpoint using `break`/`tbreak` and ensure that's hit even after restart, in that case you need to use similar manifest as above as setting `break` from `-c` isn't working (as expected?).
 
@@ -250,7 +250,7 @@ Let's see what's going on in above manifest:
 - Using an initContainer in conjunction with `emptyDir` I'm creating a `pdbrc` file
 - As `kadalu-operator` container starts after initContainer, I'm making `.pdbrc` file available to it using `subPath` and `pdb` reads this rc file
 
-Before explaning why `lifecycle` stanza is required let me show you what happens if we miss this stanza, I applied manifest and sent a signal similar to what we have done in above method.
+Before explaining why `lifecycle` stanza is required let me show you what happens if we miss this stanza, I applied manifest and sent a signal similar to what we have done in above method.
 
 ``` sh
 -> kubectl apply -f manifests/kadalu-operator.yaml
@@ -274,7 +274,7 @@ If you don't see a command prompt, try pressing enter.
 Breakpoint 2 at /kadalu/kadalulib.py:322
 ```
 
-Because of the presence of `.pdbrc`, pdb prompt didn't wait for user input (as last command is `continue`) and ran all the commands (can be referred from `kubectl logs`), however here's a gotcha you can see whenever we send a `kill -USR1 1` signal it's dropping in pdb and reading `.pdbrc` and continuing the execution path, for that to not happen we need to perform below and `lifecycle` stanze serves the same need:
+Because of the presence of `.pdbrc`, pdb prompt didn't wait for user input (as last command is `continue`) and ran all the commands (can be referred from `kubectl logs`), however here's a gotcha you can see whenever we send a `kill -USR1 1` signal it's dropping in pdb and reading `.pdbrc` and continuing the execution path, for that to not happen we need to perform below and `lifecycle` stanza serves the same need:
 
 ``` sh
 -> kubectl exec deploy/operator -c kadalu-operator -it -- bash
