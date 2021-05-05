@@ -12,7 +12,7 @@ body {
 }
 
 article {
-  @apply text-sm;
+  @apply text-base;
 }
 
 article > * {
@@ -140,10 +140,4 @@ button {
 
 input:focus, button:hover {
   @apply outline-none ring;
-}
-
-@screen md {
-  article {
-    @apply text-base;
-  }
 }
