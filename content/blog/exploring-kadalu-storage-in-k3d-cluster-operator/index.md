@@ -1,5 +1,5 @@
 ---
-title: "Exploring Kadalu Storage in K3d Cluster - Operator"
+title: "Exploring Kadalu Storage in k3d Cluster - Operator"
 date: 2021-05-03T16:24:36+05:30
 tags: ["kubernetes", "kadalu"]
 draft: false
@@ -357,7 +357,7 @@ kadalu-info   2      16m
 
 ... patch the deploy/operator resource to support `stdin` and `tty` using below manifest
 
-```
+``` yaml
 -> bat /tmp/patch.yaml --plain
 spec:
   template:
