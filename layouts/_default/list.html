@@ -8,9 +8,9 @@
     <ul id="list">
       {{range .Pages.ByPublishDate.Reverse}}
       <li class="my-1 mx-4">
-        <div class="flex">
+        <div class="flex font-sans leading-snug">
             <span class="w-4/12 md:w-2/12 text-gray-500"><time datetime="{{.PublishDate.Format "Jan 02, 2006"}}">{{.PublishDate.Format "Jan 02, 2006"}}</time></span>
-            <span class="w-8/12 md:w-10/12"><a href="{{.Permalink}}" class="font-sans leading-snug text-gray-700 transition duration-200 ease-in-out transform focus:text-orange-500 hover:text-orange-500">{{.Title}}</a></span>
+            <span class="w-8/12 md:w-10/12"><a href="{{.Permalink}}" class="text-gray-700 transition duration-200 ease-in-out transform focus:text-orange-500 hover:text-orange-500">{{.Title}}</a></span>
         </div>
       </li>
       {{end}}

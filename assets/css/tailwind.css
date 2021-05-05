@@ -128,7 +128,7 @@ button {
   @apply rounded-full shadow appearance-none px-16 py-3 uppercase font-bold text-sm bg-gray-200;
 }
 
-@layer components {
+@layer base {
     .share {
         @apply flex items-center mr-4 transition duration-500 ease-in-out transform text-gray-500;
     }
