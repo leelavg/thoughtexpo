@@ -1,0 +1,6 @@
+{{if (eq (getenv "NODE_ENV") "production")}}
+  {{ with site.Params.goat_counter }}
+  <script data-goatcounter="https://{{ . }}.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+  {{ end }}
+{{ end }}
