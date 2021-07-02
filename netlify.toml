@@ -8,3 +8,10 @@ command = "hugo -b 'https://thoughtexpo.com' --gc --minify --cleanDestinationDir
 [context.branch-deploy]
 environment = { HUGO_ENABLEGITINFO = "true", NODE_ENV = "production" }
 command = "hugo -b 'https://stage.thoughtexpo.com' --gc --minify --cleanDestinationDir"
+
+[[redirects]]
+  from = "/resume"
+  to = "https://docs.google.com/document/u/1/d/e/2PACX-1vR7r29USQJFBpTjw7aNPwCorb7uv_7YdfJ0m2LFdVIoQ4FnAu1FfDH0CVyfqpj_ofMLAYZloT1vQ_QF/pub"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
