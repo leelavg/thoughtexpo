@@ -213,6 +213,8 @@ We'll deploy a storage pool of `Replica3` type and look at all the resources tha
 
 If we supply two multiples of disks, a distributed storage pool is created.
 
+> Note: It's recommended to create XFS filesytem on disks before supplying them to Kadalu. This ensures that XFS version on host is always compatible with shared disks.
+
 Please refer inline comments in below listing
 
 ``` sh {linenos=table,hl_lines=[1,2,20,35,36,"56-58","85-88"],linenostart=1}
