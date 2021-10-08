@@ -73,7 +73,7 @@ Once kadalu operator is deployed it reconciles the state as per config and deplo
 Things to take note of:
 1. You can refer above stated script for importing local docker images into k3d cluster before deploying the operator.
 2. For installing operator through helm please refer [github](https://github.com/kadalu/kadalu/#helm-support)
-3. At the time of this writing, `HEAD` on `devel` branch is at commit [9fe6ad4](https://github.com/kadalu/kadalu/commit/9fe6ad41afa439908e7df6da07858dc743a3ed8a)
+3. At the time of this writing, `HEAD` on `devel` branch is at commit [9fe6ad4](https://github.com/kadalu/kadalu/tree/9fe6ad41afa439908e7df6da07858dc743a3ed8a)
 
 Verify all the pods are deployed and are in running state in kadalu namespace. You can install [kubectx and kubens](https://github.com/ahmetb/kubectx) for easy navigation across contexts and namespaces.
 ``` sh
