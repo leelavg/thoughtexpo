@@ -1,1 +1,6 @@
-<img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+{{ $image := .Page.Resources.GetMatch .Destination }}
+{{ $path := path.Join "content" .Page.File.Dir .Destination }}
+{{ with (imageConfig $path) }}
+{{ $image = $image.Fit (printf "%dx%d q50" .Width .Height) }}
+{{ end }}
+<img srcset="{{ $image.RelPermalink }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} class="xl:hover:scale-150" />

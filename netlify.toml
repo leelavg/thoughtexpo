@@ -1,6 +1,13 @@
 [build.environment]
 HUGO_VERSION = "0.74.0"
 
+[[plugins]]
+  package = "netlify-plugin-hugo-cache-resources"
+
+	[plugins.inputs]
+	# If it should show more verbose logs (optional, default = true)
+	debug = true
+
 [context.production]
 environment = { HUGO_ENABLEGITINFO = "true", NODE_ENV = "production" }
 command = "hugo -b 'https://thoughtexpo.com' --gc --minify --cleanDestinationDir"
