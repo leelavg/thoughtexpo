@@ -13,28 +13,20 @@ module.exports = {
       decimal: 'decimal',
     },
     colors: {
-      gray: colors.coolGray,
+      gray: colors.gray,
       blue: colors.blue,
       teal: colors.teal,
       orange: colors.orange,
       green: colors.green,
     },
-    extend: {},
   },
-  variants: {},
-  plugins: [],
-  purge: {
-    content: ['./hugo_stats.json', './layouts/**/*.html'],
-    extractors: [
-      {
-        extractor: (content) => {
-          let els = JSON.parse(content).htmlElements
-          return els.tags.concat(els.classes, els.ids)
-        },
-        extensions: ['json'],
-      },
+  content: {
+    files: [
+      './hugo_stats.json',
+      './layouts/**/*.html',
+      './layouts/*.html',
+      './assets/js/*.js',
     ],
-    mode: 'all',
   },
   darkMode: 'class',
 }

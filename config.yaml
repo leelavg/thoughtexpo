@@ -56,4 +56,10 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+
+security:
+  funcs:
+    getenv:
+      - ^HUGO_
+      - ^NODE_ENV
 ...
