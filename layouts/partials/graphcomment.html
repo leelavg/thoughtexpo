@@ -1,7 +1,7 @@
 <div><button id="comment" class="flex mt-8 mx-auto">toggle comments</button></div>
 <div id="graphcomment"></div>
 {{$commentJs := resources.Get "js/comment.js"}}
-{{if (eq (getenv "NODE_ENV") "production")}}
+{{if (eq (getenv "HUGO_ENV") "production")}}
     {{$commentJs = $commentJs | minify | fingerprint}}
 {{end}}
 <script src="{{$commentJs.Permalink}}"></script>
