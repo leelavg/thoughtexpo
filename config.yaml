@@ -21,14 +21,12 @@ permalinks:
 
 params:
   author: Leela Venkaiah G
-  twitter: leela_vg
   github: leelavg
   linkedin: leelavg
   description: '@leela_vg corner in the internet'
   search: true
   goat_counter: leelavg
   contact: >
-    [Twitter](https://twitter.com/leela_vg) /
     [GitHub](https://github.com/leelavg) /
     [LinkedIn](https://www.linkedin.com/in/leelavg)
   footer: >

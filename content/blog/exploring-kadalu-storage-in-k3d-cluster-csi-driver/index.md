@@ -145,7 +145,7 @@ Miscellaneous:
 
 Alright, as we got hold of the basics, on to the problem statement, implementation and debugging code.
 
-> **Note:** I can't possibly go through every minute detail, please [reach out](https://twitter.com/leela_vg) to me for more info or start a discussion in comments section.
+> **Note:** I can't possibly go through every minute detail, please start a discussion in comments section.
 
 ### Problem Statement
 - We have an unimplemented RPC method `ListVolumes` which is a part of `Controller` service, usually this method is invoked by [External Health Monitor Controller](https://kubernetes-csi.github.io/docs/volume-health-monitor.html)
