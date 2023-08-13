@@ -45,9 +45,7 @@ done
 
 [Dotfiles](https://github.com/leelavg/dotfiles): This isn't strictly a tool which you install, just stating here hoping it might help others on how I structure my dotfiles.
 
-
 [FZF](https://github.com/junegunn/fzf): A fuzzy finder. The basic idea is simple, you provide some text and fzf provides an interface for you to filter/find searches of text on each key press. It doesn't matter where the text is coming from and I mostly use it for it's [vim](https://github.com/junegunn/fzf.vim) integration
-
 
 [Hugo](https://github.com/gohugoio/hugo): The static site generator that I use to generate this website.
 
@@ -55,13 +53,17 @@ done
 
 [K3D](https://github.com/rancher/k3d): For quickly [setting](https://thoughtexpo.com/setup-k3d-cluster-for-local-testing-or-development/) up a local kubernetes cluster with all the niceties that come with k3s distribution.
 
-[Kyrat](https://github.com/fsquillace/kyrat): The original repo of [sshrc](https://github.com/IngoMeyer441/sshrc) disappeared from github and found kyrat as a good alternative. In addition to some dotfiles I transport my `/etc/hosts` as well into remote host to change the prompt dynamically.
+~~[Kyrat](https://github.com/fsquillace/kyrat):~~ The original repo of [sshrc](https://github.com/IngoMeyer441/sshrc) disappeared from github and found kyrat as a good alternative. In addition to some dotfiles I transport my `/etc/hosts` as well into remote host to change the prompt dynamically.
 
 At times I had to manage close to ~20 servers and this tool is very helpful to figure out on which server I'm working on by looking at the prompt. I maintain a [fork](https://github.com/leelavg/kyrat/tree/fork) of this for my additional requirements.
 
-[Neovim](https://github.com/neovim/neovim/): Yes, I'm reaping the benefits of my initial investment of putting my own `init.vim`.
+**Update:** Not using anymore, there's no need for me to manage servers now.
+
+~~[Neovim](https://github.com/neovim/neovim/):~~ Yes, I'm reaping the benefits of my initial investment of putting my own `init.vim`.
 
 One nicety among hundreds is file system bookmarks, irrespective of wherever you are in the file system tree or tmux session, you can summon bookmarked file in `nvim`. For example, mark `init.vim` with `mV` and in any `nvim` window you can open `init.vim` using `'V` mark.
+
+**Update:** Moved to [Helix](https://helix-editor.com/) editor
 
 [Python](https://github.com/python/cpython): When bash data structures become cumbersome that's the time for python's list comprehensions (for quickly creating bricks string in gluster volume create commands)
 
@@ -119,9 +121,13 @@ Last login: Sun Jun 13 08:56:11 2021 from 172.28.172.5
 
 [Joplin](https://github.com/laurent22/joplin): The note taking app with good synchronization capabilities among the devices that I use
 
-[Konsole](https://github.com/KDE/konsole): Only reason, konsole supports ligatures out of the box and I don't mind spending a bit more of CPU/Memory resources on this.
+~~[Konsole](https://github.com/KDE/konsole):~~ Only reason, konsole supports ligatures out of the box and I don't mind spending a bit more of CPU/Memory resources on this.
 
-[Victor Mono](https://rubjo.github.io/victor-mono/): Not strictly a tool, but good looking fonts. I moved from fira code due to an [extra step](https://github.com/tonsky/FiraCode/issues/869) needed to bake in some of the variants in ttf files.
+**Update:** Moved to a lightweight, fully functional alternative terminal, i.e, [foot](https://codeberg.org/dnkl/foot)
+
+~~[Victor Mono](https://rubjo.github.io/victor-mono/):~~ Not strictly a tool, but good looking fonts. I moved from fira code due to an [extra step](https://github.com/tonsky/FiraCode/issues/869) needed to bake in some of the variants in ttf files.
+
+**Update:** Moved to [JetBrains Mono](https://www.jetbrains.com/lp/mono/), then to [Inel One Mono](https://github.com/intel/intel-one-mono)
 
 [Virt Manager](https://github.com/virt-manager/virt-manager): For creating a base VM on a KVM hypervisor or if I miss enabling `serial-getty@ttyS0` on a VM.
 
@@ -154,15 +160,17 @@ In the companion kdeconnect mobile app, you can set below run commands to lock a
 -> Unlock: loginctl unlock-session
 ```
 
-[WinTile](https://extensions.gnome.org/extension/1723/wintile-windows-10-window-tiling-for-gnome/): I can get away with not using dual monitors with this extension and at most I open not more than 4 windows and able to manage my screen estate just good enough.
+~~[WinTile](https://extensions.gnome.org/extension/1723/wintile-windows-10-window-tiling-for-gnome/):~~ I can get away without using dual monitors with this extension and at most I open not more than 4 windows and able to manage my screen estate just good enough.
 ![gui](2-gui.png "gui")
+
+**Update:** Moved to wonderful [Tactile](https://extensions.gnome.org/extension/4548/tactile/).
 
 ## Misc:
 
 I wasn't able to segregate some in above buckets due to their less frequency of use by me or widely known to others and here they are:
 
 - [Swapping](https://opensource.com/article/18/11/how-swap-ctrl-and-caps-lock-your-keyboard) `Ctrl` and `CapsLock` functionality
-- [Octotree](https://chrome.google.com/webstore/detail/octotree-github-code-tree/bkhaagjahfmjljalopjnoealnfndnagc), Github code tree navigation
+- ~~[Octotree](https://chrome.google.com/webstore/detail/octotree-github-code-tree/bkhaagjahfmjljalopjnoealnfndnagc), Github code tree navigation~~
 - Virtualization tools: [libvirt](https://github.com/libvirt/libvirt) and it's entire suite of tools notably `virsh`, `virt-df`, `virt-sysprep`, `virt-builder`, `virt-clone` among others
 - [Git](https://github.com/git/git), [ExplainShell](https://explainshell.com/), [PipTools](https://github.com/jazzband/pip-tools), [Dive](https://github.com/wagoodman/dive)
 

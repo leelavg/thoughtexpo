@@ -5,7 +5,7 @@
     {{if .Site.Params.search}}
       <input id="search" type="text" placeholder="Search by title..."/>
     {{end}}
-    <ul id="list">
+    <ol reversed class="text-gray-500 my-4" id="list">
       {{range .Pages.ByPublishDate.Reverse}}
       <li class="my-1 mx-4">
         <div class="flex font-sans leading-snug">
@@ -14,7 +14,7 @@
         </div>
       </li>
       {{end}}
-    </ul>
+    </ol>
 </section>
 {{partial "search.html" .}}
 {{end}}
