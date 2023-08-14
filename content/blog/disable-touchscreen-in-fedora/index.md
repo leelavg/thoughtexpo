@@ -106,13 +106,16 @@ After performing above, we can confirm that this device doesn't show up in `sudo
 Create a `systemd` unit file, reload the daemon and enable the unit. After reboot, events from touchscreen will be dropped.
 
 ```sh
+# replace the value with your device product id
+# note: use capitalized hex values
+-> product_id="2C29"
 -> sudo tee /etc/systemd/system/disable-touchscreen.service > /dev/null << EOF
 [Unit]
 Description=Unbind touchscreen device
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -c "basename \$(ls /sys/bus/hid/devices/*2C29* -d) > /sys/bus/hid/drivers/hid-multitouch/unbind"
+ExecStart=/bin/bash -c "basename \$(ls /sys/bus/hid/devices/*$product_id* -d) > /sys/bus/hid/drivers/hid-multitouch/unbind"
 RemainAfterExit=yes
 
 [Install]
